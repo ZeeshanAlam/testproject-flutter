@@ -58,6 +58,6 @@ class _InitializerWidgetState extends State<InitializerWidget> {
       body: Center(
         child: CircularProgressIndicator(),
       ),
-    ) : _auth.currentUser == null ? LoginScreen() : const HomeScreen();
+    ) : _auth.currentUser == null ? HomeScreen() : const HomeScreen();
   }
 }
