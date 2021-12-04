@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:test_project/Screens/login_screen.dart';
 import 'otp.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -9,6 +13,11 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+
+  bool showLoading = false;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,6 +125,7 @@ class _RegisterState extends State<Register> {
                           // onPressed: () {},
                           onPressed: () {
                           Navigator.of(context).push(
+
                             MaterialPageRoute(builder: (context) => Otp()),
                           );
                         },
@@ -149,4 +159,36 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
+
+  /*sendOTP() async {
+    setState(() {
+      showLoading = true;
+    });
+
+    await _auth.verifyPhoneNumber(
+      phoneNumber: newCode + phoneController.text,
+      verificationCompleted: (phoneAuthCredential) async {
+        setState(() {
+          showLoading = false;
+        });
+        //signInWithPhoneAuthCredential(phoneAuthCredential);
+      },
+      verificationFailed: (verificationFailed) async {
+        setState(() {
+          showLoading = false;
+        });
+        _scaffoldKey.currentState!.showSnackBar(
+            SnackBar(content: Text(verificationFailed.message.toString())));
+      },
+      codeSent: (verificationId, resendingToken) async {
+        setState(() {
+          showLoading = false;
+          currentState = MobileVerificationState.SHOW_OTP_FORM_STATE;
+          this.verificationId = verificationId;
+        });
+      },
+      codeAutoRetrievalTimeout: (verificationId) async {},
+    );
+  }*/
+
 }
