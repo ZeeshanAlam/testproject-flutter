@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: ()async{
           await _auth.signOut();
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
         },
         child: const Icon(Icons.logout),
       ),
