@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:test_project/Screens/login_screen.dart';
 import 'package:test_project/Screens/register.dart';
 // import 'package:flutter_otp_verification_ui/register.dart';
 
@@ -56,7 +57,7 @@ class _WelcomeState extends State<Welcome> {
                     // onPressed: () {},
                   onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Register()),
+                      MaterialPageRoute(builder: (context) => const LoginScreen()),
                     );
                   },
                   style: ButtonStyle(

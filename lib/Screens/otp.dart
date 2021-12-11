@@ -90,6 +90,8 @@ class _OtpState extends State<Otp> {
                         _textFieldOTP(first: true, last: false),
                         _textFieldOTP(first: false, last: false),
                         _textFieldOTP(first: false, last: false),
+                        _textFieldOTP(first: false, last: false),
+                        _textFieldOTP(first: false, last: false),
                         _textFieldOTP(first: false, last: true),
                       ],
                     ),
@@ -168,10 +170,11 @@ class _OtpState extends State<Otp> {
 
   Widget _textFieldOTP({required bool first, last}) {
     return Container(
-      height: 55,
+      height: 46,
       child: AspectRatio(
-        aspectRatio: 1.0,
+        aspectRatio: 1,
         child: TextField(
+          enableInteractiveSelection: false,
           autofocus: true,
           onChanged: (value) {
             if (value.length == 1 && last == false) {
@@ -181,20 +184,20 @@ class _OtpState extends State<Otp> {
               FocusScope.of(context).previousFocus();
             }
           },
-          showCursor: false,
+          showCursor: true,
           readOnly: false,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           keyboardType: TextInputType.number,
           maxLength: 1,
           decoration: InputDecoration(
             counter: Offstage(),
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(width: 2, color: Colors.black12),
-                borderRadius: BorderRadius.circular(12)),
+                borderRadius: BorderRadius.circular(16)),
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(width: 2, color: Color.fromRGBO(0, 157, 255, .4)),
-                borderRadius: BorderRadius.circular(12)),
+                borderRadius: BorderRadius.circular(16)),
           ),
         ),
       ),
