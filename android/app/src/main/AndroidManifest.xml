@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.test_project">
+    package="com.khelstreet.influencerguru">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="test_project"
+        android:label="Influencer Guru"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

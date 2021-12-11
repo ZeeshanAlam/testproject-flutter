@@ -7,18 +7,26 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:902924629389:android:0c6d0accfe10e6f60ab9c4",
+        "mobilesdk_app_id": "1:902924629389:android:a4a93df82a32179d0ab9c4",
         "android_client_info": {
-          "package_name": "com.example.test_project"
+          "package_name": "com.khelstreet.influencerguru"
         }
       },
       "oauth_client": [
         {
-          "client_id": "902924629389-lk2b5k12bltmoptckbl6jghl56vjs2vq.apps.googleusercontent.com",
+          "client_id": "902924629389-92abrhv78onof3hm7p37oe2m4t2ksmt5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.test_project",
+            "package_name": "com.khelstreet.influencerguru",
             "certificate_hash": "9bb00b2cdfbcfc63d45406ad899b6a4ff7a8be00"
+          }
+        },
+        {
+          "client_id": "902924629389-e5d0nlpg1v7p14a21d1oakf7stq1dq1k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.khelstreet.influencerguru",
+            "certificate_hash": "54035c914e60ce538bbe7d4e54c9486d3f07afe0"
           }
         },
         {

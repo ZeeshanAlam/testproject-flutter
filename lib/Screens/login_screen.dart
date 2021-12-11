@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:test_project/Screens/video_feed.dart';
 
 import 'home_screen.dart';
 
@@ -23,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final phoneController = TextEditingController();
   final otpController = TextEditingController();
+  late String otpText ="";
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -52,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
      if (authCredential.user != null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+            context, MaterialPageRoute(builder: (context) => const VideoFeed()));
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -224,7 +226,7 @@ class _LoginScreenState extends State<LoginScreen> {
   getOTP(){
     PhoneAuthCredential phoneAuthCredential =
     PhoneAuthProvider.credential(
-        verificationId: verificationId, smsCode: otpController.text);
+        verificationId: verificationId, smsCode: otpText);
 
     signInWithPhoneAuthCredential(phoneAuthCredential);
   }
@@ -480,7 +482,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         _textFieldOTP(first: true, last: false),
                         _textFieldOTP(first: false, last: false),
                         _textFieldOTP(first: false, last: false),
+                        _textFieldOTP(first: false, last: false),
+                        _textFieldOTP(first: false, last: false),
                         _textFieldOTP(first: false, last: true),
+
                       ],
                     ),
                     SizedBox(
@@ -490,7 +495,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () async{
+                        onPressed: ()async {
+                          debugPrint( otpText);
                           getOTP();
                         },
                         style: ButtonStyle(
@@ -556,17 +562,21 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+
   }
 
   Widget _textFieldOTP({required bool first, last}) {
     return Container(
-      height: 55,
+      height: 46,
       child: AspectRatio(
-        aspectRatio: 1.0,
+        aspectRatio: 1,
         child: TextField(
-          controller: otpController,
+          //controller: otpController,
+
+          enableInteractiveSelection: false,
           autofocus: true,
           onChanged: (value) {
+            otpText+=value;
             if (value.length == 1 && last == false) {
               FocusScope.of(context).nextFocus();
             }
@@ -574,20 +584,20 @@ class _LoginScreenState extends State<LoginScreen> {
               FocusScope.of(context).previousFocus();
             }
           },
-          showCursor: false,
+          showCursor: true,
           readOnly: false,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           keyboardType: TextInputType.number,
           maxLength: 1,
           decoration: InputDecoration(
             counter: Offstage(),
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(width: 2, color: Colors.black12),
-                borderRadius: BorderRadius.circular(12)),
+                borderRadius: BorderRadius.circular(16)),
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(width: 2, color: Color.fromRGBO(0, 157, 255, .4)),
-                borderRadius: BorderRadius.circular(12)),
+                borderRadius: BorderRadius.circular(16)),
           ),
         ),
       ),
